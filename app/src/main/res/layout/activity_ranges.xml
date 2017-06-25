@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rangespage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="clientgreenhouse.clientgreenhouseapp.RangesActivity">
+
+    <Button
+        android:id="@+id/homeButton2"
+        android:layout_width="115dp"
+        android:layout_height="60dp"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.995" />
+
+    <Button
+        android:id="@+id/graphsButton2"
+        android:layout_width="115dp"
+        android:layout_height="60dp"
+        android:text="Graphs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.995" />
+
+    <Button
+        android:id="@+id/rangesButton2"
+        android:layout_width="115dp"
+        android:layout_height="60dp"
+        android:text="Set Ranges"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.981"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.995" />
+
+    <TextView
+        android:id="@+id/instructionsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please use the following menu to update each greenhouse attribute's lower and upper bound values:"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05"
+        android:focusable="true"
+        android:focusableInTouchMode="true"/>
+
+    <ScrollView
+        android:layout_width="363dp"
+        android:layout_height="376dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.496">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="600dp">
+
+            <ImageView
+                android:id="@+id/humidityIcon"
+                android:layout_width="60dp"
+                android:layout_height="45dp"
+                android:layout_below="@+id/humidityTitle"
+                android:layout_centerHorizontal="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.141"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.437"
+                app:srcCompat="@drawable/ic_humidity" />
+
+            <TextView
+                android:id="@+id/tempTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="Temperature"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="141dp"
+                tools:layout_editor_absoluteY="6dp" />
+
+            <ImageView
+                android:id="@+id/tempIcon"
+                android:layout_width="73dp"
+                android:layout_height="50dp"
+                android:layout_alignLeft="@+id/humidityTitle"
+                android:layout_alignStart="@+id/humidityTitle"
+                android:layout_below="@+id/tempTitle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.064"
+                app:srcCompat="@drawable/ic_temperature" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="88dp"
+                android:layout_height="48dp"
+                android:layout_below="@+id/tempIcon"
+                android:layout_centerHorizontal="true"
+                android:text="UPDATE"
+                tools:layout_editor_absoluteX="149dp"
+                tools:layout_editor_absoluteY="106dp" />
+
+            <Button
+                android:id="@+id/updateTempButton"
+                android:layout_width="88dp"
+                android:layout_height="48dp"
+                android:layout_below="@+id/tempIcon"
+                android:layout_centerHorizontal="true"
+                android:text="UPDATE"
+                tools:layout_editor_absoluteX="149dp"
+                tools:layout_editor_absoluteY="106dp" />
+
+            <TextView
+                android:id="@+id/humidityCHBTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tempCHBTitle"
+                android:layout_alignStart="@+id/tempCHBTitle"
+                android:layout_below="@+id/humidityTitle"
+                android:text="current high bound"
+                tools:layout_editor_absoluteX="251dp"
+                tools:layout_editor_absoluteY="38dp" />
+
+            <TextView
+                android:id="@+id/tempCHBTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tempTitle"
+                android:layout_toEndOf="@+id/tempTitle"
+                android:layout_toRightOf="@+id/tempTitle"
+                android:text="current high bound"
+                tools:layout_editor_absoluteX="251dp"
+                tools:layout_editor_absoluteY="38dp" />
+
+            <TextView
+                android:id="@+id/lightCLBTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/humidityCLBTitle"
+                android:layout_alignStart="@+id/humidityCLBTitle"
+                android:layout_below="@+id/lightTitle"
+                android:text="current low bound"
+                tools:layout_editor_absoluteX="251dp"
+                tools:layout_editor_absoluteY="38dp" />
+
+            <TextView
+                android:id="@+id/lightCHBTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/lightCurrUpperVal"
+                android:layout_alignLeft="@+id/humidityCHBTitle"
+                android:layout_alignStart="@+id/humidityCHBTitle"
+                android:text="current high bound"
+                tools:layout_editor_absoluteX="251dp"
+                tools:layout_editor_absoluteY="38dp" />
+
+            <EditText
+                android:id="@+id/humidityNewUpperVal"
+                android:layout_width="91dp"
+                android:layout_height="45dp"
+                android:layout_alignLeft="@+id/tempNewUpperVal"
+                android:layout_alignStart="@+id/tempNewUpperVal"
+                android:layout_alignTop="@+id/button5"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                tools:layout_editor_absoluteX="30dp"
+                tools:layout_editor_absoluteY="69dp" />
+
+            <EditText
+                android:id="@+id/tempNewUpperVal"
+                android:layout_width="91dp"
+                android:layout_height="45dp"
+                android:layout_alignLeft="@+id/tempCHBTitle"
+                android:layout_alignStart="@+id/tempCHBTitle"
+                android:layout_below="@+id/tempCurrUpperVal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                tools:layout_editor_absoluteX="30dp"
+                tools:layout_editor_absoluteY="69dp" />
+
+            <TextView
+                android:id="@+id/humidityCLBTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tempCLBTitle"
+                android:layout_alignStart="@+id/tempCLBTitle"
+                android:layout_below="@+id/humidityTitle"
+                android:text="current low bound"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="38dp" />
+
+            <TextView
+                android:id="@+id/tempCLBTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tempTitle"
+                android:layout_toLeftOf="@+id/tempTitle"
+                android:layout_toStartOf="@+id/tempTitle"
+                android:text="current low bound"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="38dp" />
+
+            <EditText
+                android:id="@+id/humidityNewLowVal"
+                android:layout_width="91dp"
+                android:layout_height="45dp"
+                android:layout_alignLeft="@+id/tempNewLowVal"
+                android:layout_alignStart="@+id/tempNewLowVal"
+                android:layout_below="@+id/humidityCurrLowVal"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                tools:layout_editor_absoluteX="264dp"
+                tools:layout_editor_absoluteY="69dp" />
+
+            <EditText
+                android:id="@+id/tempNewLowVal"
+                android:layout_width="91dp"
+                android:layout_height="45dp"
+                android:layout_alignLeft="@+id/tempCLBTitle"
+                android:layout_alignStart="@+id/tempCLBTitle"
+                android:layout_below="@+id/tempCurrUpperVal"
+                android:layout_marginLeft="11dp"
+                android:layout_marginStart="11dp"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                tools:layout_editor_absoluteX="264dp"
+                tools:layout_editor_absoluteY="69dp" />
+
+            <TextView
+                android:id="@+id/humidityCurrLowVal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/humidityIcon"
+                android:layout_alignLeft="@+id/tempCurrLowVal"
+                android:layout_alignStart="@+id/tempCurrLowVal"
+                android:text="00.00"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tempCurrLowVal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/button"
+                android:layout_alignLeft="@+id/tempNewLowVal"
+                android:layout_alignStart="@+id/tempNewLowVal"
+                android:layout_marginLeft="18dp"
+                android:layout_marginStart="18dp"
+                android:text="00.00"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tempCurrUpperVal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/button"
+                android:layout_alignEnd="@+id/tempNewUpperVal"
+                android:layout_alignRight="@+id/tempNewUpperVal"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:text="00.00"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/lightCurrLowVal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/lightCurrUpperVal"
+                android:layout_alignBottom="@+id/lightCurrUpperVal"
+                android:layout_alignLeft="@+id/humidityCurrLowVal"
+                android:layout_alignStart="@+id/humidityCurrLowVal"
+                android:text="00.00"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/lightCurrUpperVal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/humidityCurrUpperVal"
+                android:layout_alignStart="@+id/humidityCurrUpperVal"
+                android:layout_below="@+id/lightCLBTitle"
+                android:layout_marginTop="11dp"
+                android:text="00.00"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/humidityCurrUpperVal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/updateHumidityButton"
+                android:layout_alignLeft="@+id/tempCurrUpperVal"
+                android:layout_alignStart="@+id/tempCurrUpperVal"
+                android:text="00.00"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/humidityTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="36dp"
+                android:text="Humidity"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/humidityNewLowVal"
+                android:layout_alignLeft="@+id/button"
+                android:layout_alignStart="@+id/button"
+                android:text="UPDATE" />
+
+            <Button
+                android:id="@+id/updateLightButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/lightTitle"
+                android:layout_alignRight="@+id/lightTitle"
+                android:layout_below="@+id/lightIcon"
+                android:text="UPDATE" />
+
+            <Button
+                android:id="@+id/updateHumidityButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/button5"
+                android:layout_alignStart="@+id/button5"
+                android:layout_alignTop="@+id/humidityNewLowVal"
+                android:text="UPDATE" />
+
+            <TextView
+                android:id="@+id/lightTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button5"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="39dp"
+                android:text="Light Level"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/lightIcon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignLeft="@+id/humidityIcon"
+                android:layout_alignStart="@+id/humidityIcon"
+                android:layout_below="@+id/lightTitle"
+                app:srcCompat="@drawable/ic_light" />
+
+            <EditText
+                android:id="@+id/lightNewUpperVal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/humidityNewUpperVal"
+                android:layout_alignLeft="@+id/humidityNewUpperVal"
+                android:layout_alignRight="@+id/humidityNewUpperVal"
+                android:layout_alignStart="@+id/humidityNewUpperVal"
+                android:layout_below="@+id/lightCurrUpperVal"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/lightNewLowVal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/humidityNewLowVal"
+                android:layout_alignLeft="@+id/humidityNewLowVal"
+                android:layout_alignRight="@+id/humidityNewLowVal"
+                android:layout_alignStart="@+id/humidityNewLowVal"
+                android:layout_below="@+id/lightCurrLowVal"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/tempUpdateMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/humidityUpdateMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/updateHumidityButton"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/lightUpdateMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/updateLightButton"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
