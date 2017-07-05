@@ -1,3 +1,9 @@
+/* The main activity for ClientGreenhouseApp
+ * Created by Ben Parker and Sarah Colborne
+ * Modified by Sean Mahoney and Asma Alhajri
+ *
+ * @author Sarah Colborne, Ben Parker, Sean Mahoney and Asma Alhajri
+ */
 package clientgreenhouse.clientgreenhouseapp;
 
 import android.content.Intent;
@@ -5,10 +11,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-
+    public DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+    public DatabaseReference mCurrentRef= mRootRef.child("Current_Readings");
+    public DatabaseReference mCurrTemp= mCurrentRef.child("Current_Temperature");
+    public DatabaseReference mCurrHumidity =mCurrentRef.child("Current_Humidity");
+    public DatabaseReference mCurrLight= mCurrentRef.child("Current_Light");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         final Button homeNavButton;
         final Button rangesNavButton;
         final Button graphsNavButton;
+        final TextView currentTemp;
+        final TextView currentHumidity;
+        final TextView currentLight;
         homeNavButton = (Button) findViewById(R.id.homeButton);
         rangesNavButton = (Button) findViewById(R.id.rangesButton);
         graphsNavButton = (Button) findViewById(R.id.graphsButton);
@@ -41,5 +60,50 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, GraphActivity.class));
             }
         });
+
+        currentTemp =(TextView) findViewById(R.id.temperatureValue);
+        currentHumidity =(TextView) findViewById(R.id.humidityValue);
+        currentLight =(TextView) findViewById(R.id.lightValue);
+
+        // Displays the real time temperature from firebase
+        mCurrTemp.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                currentTemp.setText(value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        // Displays the real time humidity value from firebase
+        mCurrHumidity.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                currentHumidity.setText(value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        // Displays the real time light value from firebase
+        mCurrLight.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                currentLight.setText(value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 }
