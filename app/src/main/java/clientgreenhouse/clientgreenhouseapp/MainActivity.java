@@ -1,13 +1,11 @@
 package clientgreenhouse.clientgreenhouseapp;
 
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.content.Intent;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
         final Button homeNavButton;
         final Button rangesNavButton;
         final Button graphsNavButton;
-
         homeNavButton = (Button) findViewById(R.id.homeButton);
         rangesNavButton = (Button) findViewById(R.id.rangesButton);
         graphsNavButton = (Button) findViewById(R.id.graphsButton);
@@ -44,6 +41,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, GraphActivity.class));
             }
         });
-
     }
 }
