@@ -20,12 +20,14 @@ public class NotificationReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent){
-        Log.d("STATE", "LALA");
         String action = intent.getAction();
         Intent serviceIntent = null;
         serviceIntent = NotificationService.createIntentStartNotification(context);
         if (action.equals("START_SERVICE")) {
             context.startService(serviceIntent);
+        }
+        else {
+            context.stopService(serviceIntent);
         }
     }
 
@@ -46,7 +48,6 @@ public class NotificationReceiver extends BroadcastReceiver {
                 getTriggerAt(new Date(2015,3,7)),
                 NOTIFICATIONS_INTERVAL_IN_HOURS * AlarmManager.INTERVAL_HOUR,
                 alarmIntent);
-        Log.d("STATE", "ALARM_SET");
         intent.setAction("START_SERVICE");
         context.sendBroadcast(intent);
     }
@@ -56,9 +57,10 @@ public class NotificationReceiver extends BroadcastReceiver {
         Intent intent = new Intent(context, NotificationReceiver.class);
         PendingIntent alarmIntent = PendingIntent.getBroadcast(context,
                 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        intent.setAction("ACTION_STOP");
+        context.sendBroadcast(intent);
         alarmManager.cancel(alarmIntent);
         alarmIntent.cancel();
-        Log.d("STATE", "ALARM_DELETE");
     }
 
     private static long getTriggerAt(Date now) {

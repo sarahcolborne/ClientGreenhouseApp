@@ -7,6 +7,7 @@
 package clientgreenhouse.clientgreenhouseapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -109,11 +110,15 @@ public class MainActivity extends AppCompatActivity {
 
     //display or annull notifications when set
     public void pushNotifications(View view){
+        Button alertButton = (Button) findViewById(R.id.button2);
         if (NotificationReceiver.alarmRunning(getApplicationContext()) == false){
             NotificationReceiver.setAlarm(getApplicationContext());
+            alertButton.setTextColor(Color.RED);
+
         }
         else{
             NotificationReceiver.deleteAlarm(getApplicationContext());
+            alertButton.setTextColor(Color.BLACK);
         }
     }
 }

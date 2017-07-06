@@ -55,5 +55,8 @@ dependencies {
     compile 'com.google.android.gms:play-services-basement:10.2.1'
     //compile 'com.google.android.gms:play-services:11.0.1'
     debugCompile 'com.google.firebase:firebase-crash:10.2.1'
+
+    //UIAutomator
+    androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.1'
 }
 apply plugin: 'com.google.gms.google-services'
