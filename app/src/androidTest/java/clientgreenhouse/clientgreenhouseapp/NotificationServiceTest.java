@@ -1,12 +1,14 @@
 package clientgreenhouse.clientgreenhouseapp;
 
 import android.support.test.InstrumentationRegistry;
+import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject2;
 import android.support.test.uiautomator.Until;
 
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -27,6 +29,10 @@ public class NotificationServiceTest {
 
         private final static String NOTIFICATION_TITLE = "Alert!";
 
+        @Rule
+        public ActivityTestRule<MainActivity> mainActivityRule = new ActivityTestRule<>(
+                MainActivity.class);
+
         @Test
         public void notificationTest() {
                 //Access Range activity
@@ -40,11 +46,13 @@ public class NotificationServiceTest {
                 onView(withId(R.id.humidityNewUpperVal)).perform(typeText("40.0"), closeSoftKeyboard());
                 onView(withId(R.id.updateHumidityButton)).perform(click());
                 //Insert and update values for light
-                onView(withId(R.id.lightNewLowVal)).perform(typeText("15"), closeSoftKeyboard());
-                onView(withId(R.id.lightNewUpperVal)).perform(typeText("20"), closeSoftKeyboard());
+                /*
+                onView(withId(R.id.lightNewLowVal)).perform(typeText("0"), closeSoftKeyboard());
+                onView(withId(R.id.lightNewUpperVal)).perform(typeText("0"), closeSoftKeyboard());
                 onView(withId(R.id.updateLightButton)).perform(click());
+                */
                 //Navigate back to home screen
-                onView(withId(R.id.homeButton)).perform(click());
+                onView(withId(R.id.homeButton2)).perform(click());
                 //Turn on alerts
                 onView(withId(R.id.button2)).perform(click());
                 //Check for notification
@@ -53,7 +61,7 @@ public class NotificationServiceTest {
                 device.wait(Until.hasObject(By.text(NOTIFICATION_TITLE)), TIMEOUT);
                 UiObject2 title = device.findObject(By.text(NOTIFICATION_TITLE));
                 assertEquals(NOTIFICATION_TITLE, title.getText());
-                //device.wait(Until.hasObject(By.text(ESPRESSO.getName())), TIMEOUT);
+                device.wait(Until.hasObject(By.text(ESPRESSO.getName())), TIMEOUT);
                 //Turn off alerts
                 onView(withId(R.id.button2)).perform(click());
         }

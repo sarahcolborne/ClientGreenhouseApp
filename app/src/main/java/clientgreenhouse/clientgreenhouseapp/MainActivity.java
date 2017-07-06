@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         //this section of code provides the bottom menu button functionality
         final Button homeNavButton;
         final Button rangesNavButton;
@@ -108,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //display or annull notifications when set
+    //display or annul notifications when set
     public void pushNotifications(View view){
         Button alertButton = (Button) findViewById(R.id.button2);
         if (NotificationReceiver.alarmRunning(getApplicationContext()) == false){
