@@ -106,4 +106,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    //display or annull notifications when set
+    public void pushNotifications(View view){
+        if (NotificationReceiver.alarmRunning(getApplicationContext()) == false){
+            NotificationReceiver.setAlarm(getApplicationContext());
+        }
+        else{
+            NotificationReceiver.deleteAlarm(getApplicationContext());
+        }
+    }
 }
