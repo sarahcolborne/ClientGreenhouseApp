@@ -61,8 +61,5 @@ public class NotificationServiceTest {
                 device.wait(Until.hasObject(By.text(NOTIFICATION_TITLE)), TIMEOUT);
                 UiObject2 title = device.findObject(By.text(NOTIFICATION_TITLE));
                 assertEquals(NOTIFICATION_TITLE, title.getText());
-                device.wait(Until.hasObject(By.text(ESPRESSO.getName())), TIMEOUT);
-                //Turn off alerts
-                onView(withId(R.id.button2)).perform(click());
         }
 }
