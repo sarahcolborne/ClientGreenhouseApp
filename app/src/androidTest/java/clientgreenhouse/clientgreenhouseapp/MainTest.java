@@ -28,10 +28,10 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 @RunWith(AndroidJUnit4.class)
 public class MainTest  {
     private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
-    private DatabaseReference mCurrentRef= mRootRef.child("Current_Readings");
-    private DatabaseReference mCurrTemp= mCurrentRef.child("Current_Temperature");
-    private DatabaseReference mCurrHumidity =mCurrentRef.child("Current_Humidity");
-    private DatabaseReference mCurrLight= mCurrentRef.child("Current_Light");
+    private DatabaseReference mCurrentRef= mRootRef.child("Current_Sensor");
+    private DatabaseReference mCurrTemp= mCurrentRef.child("temp");
+    private DatabaseReference mCurrHumidity =mCurrentRef.child("humid");
+    private DatabaseReference mCurrLight= mCurrentRef.child("lux");
     String temp_fireBase;
     String humidity_fireBase;
     String light_fireBase;
