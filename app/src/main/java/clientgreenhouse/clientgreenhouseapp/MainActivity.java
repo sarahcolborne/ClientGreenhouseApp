@@ -22,10 +22,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     public DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
-    public DatabaseReference mCurrentRef= mRootRef.child("Current_Readings");
-    public DatabaseReference mCurrTemp= mCurrentRef.child("Current_Temperature");
-    public DatabaseReference mCurrHumidity =mCurrentRef.child("Current_Humidity");
-    public DatabaseReference mCurrLight= mCurrentRef.child("Current_Light");
+    public DatabaseReference mCurrentRef= mRootRef.child("Current_Sensor");
+//    public DatabaseReference mCurrTemp= mCurrentRef.child("Current_Temperature");
+//    public DatabaseReference mCurrHumidity =mCurrentRef.child("Current_Humidity");
+//    public DatabaseReference mCurrLight= mCurrentRef.child("Current_Light");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,11 +66,13 @@ public class MainActivity extends AppCompatActivity {
         currentLight =(TextView) findViewById(R.id.lightValue);
 
         // Displays the real time temperature from firebase
-        mCurrTemp.addValueEventListener(new ValueEventListener() {
+        mCurrentRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                currentTemp.setText(value);
+                SensorEntry curr = dataSnapshot.getValue(SensorEntry.class);
+                currentTemp.setText(Double.toString(curr.temp));
+                currentHumidity.setText(Double.toString(curr.humid));
+                currentLight.setText(Double.toString(curr.lux));
             }
 
             @Override
@@ -78,32 +80,32 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        // Displays the real time humidity value from firebase
-        mCurrHumidity.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                currentHumidity.setText(value);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        // Displays the real time light value from firebase
-        mCurrLight.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                currentLight.setText(value);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+//        // Displays the real time humidity value from firebase
+//        mCurrHumidity.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                String value = dataSnapshot.getValue(String.class);
+//                currentHumidity.setText(value);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//        // Displays the real time light value from firebase
+//        mCurrLight.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                String value = dataSnapshot.getValue(String.class);
+//                currentLight.setText(value);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
 
     }
 
