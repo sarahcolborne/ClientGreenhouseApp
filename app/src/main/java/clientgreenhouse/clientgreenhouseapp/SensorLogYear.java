@@ -14,11 +14,11 @@ public class SensorLogYear {
 
     public SensorLogYear(){
         months = new SensorLogMonth[12];
-        addMonth(new SensorLogMonth());
-        months[0].addWeek(new SensorLogWeek());
-        months[0].weeks[0].addDay(new SensorLogDay());
-        months[0].weeks[0].days[0].addHour(new SensorLogHour());
-        months[0].weeks[0].days[0].hours[0].addMinute(new SensorLogMinute());
+        months[0] = new SensorLogMonth();
+        months[0].weeks[0] = new SensorLogWeek();
+        months[0].weeks[0].days[0] = new SensorLogDay();
+        months[0].weeks[0].days[0].hours[0] = new SensorLogHour();
+        months[0].weeks[0].days[0].hours[0].mins[0] =new SensorLogMinute();
         changed = false;
         int size = 0;
     }

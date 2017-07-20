@@ -10,6 +10,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 public class FBOTestActivity extends AppCompatActivity {
 
     public DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
@@ -28,43 +30,56 @@ public class FBOTestActivity extends AppCompatActivity {
                 int currDay = dataSnapshot.child("Indices").child("Day").getValue(int.class);
                 int currWeek = dataSnapshot.child("Indices").child("Week").getValue(int.class);
                 int currMonth = dataSnapshot.child("Indices").child("Month").getValue(int.class);
-                int maxSec;
-                int maxMin;
-                int maxHour;
-                int maxDay;
-                int maxWeek;
-                int maxMonth;
+                int maxSec = 59;
+                int maxMin = 59;
+                int maxHour = 23;
+                int maxDay = 6;
+                int maxWeek = 3;
 
                 //need to fill to capacity unless we are at current value for everything.
-                for(int month = 0; month<= currSec; month++){
+                for(int month = 0; month<= currMonth; month++){
+                    if (month == currMonth){
+                        maxWeek = currWeek;
+                    }
                     SensorLogMonth monthToAdd = new SensorLogMonth();
-                    for(int week = 0; week<= currWeek; week++){
+                    for(int week = 0; week<= maxWeek; week++){
+                        if(week == currWeek && month == currMonth){
+                            maxDay = currDay;
+                        }
                         SensorLogWeek weekToAdd = new SensorLogWeek();
-                        for(int day = 0; day<=currDay; day++){
+                        for(int day = 0; day<=maxDay; day++){
+                            if(day == currDay && week == currWeek && month == currMonth){
+                                maxHour = currHour;
+                            }
                             SensorLogDay dayToAdd = new SensorLogDay();
-                            for(int hour = 0; hour<=currHour; hour++){
+                            for(int hour = 0; hour<=maxHour; hour++){
+                                if(hour == currHour && day == currDay && week == currWeek && month == currMonth){
+                                    maxMin = currMin;
+                                }
                                 SensorLogHour hourToAdd = new SensorLogHour();
-                                if(hour<currHour)
-                                    maxMin = 59;
-                                else maxMin = currMin;
                                 for(int min = 0; min<maxMin; min++){
                                     SensorLogMinute minToAdd = new SensorLogMinute();
-                                    if(min<currMin) {
-                                        maxSec = 59;
+                                    if(min == currMin && hour == currHour && day == currDay && week == currWeek && month == currMonth){
+                                        maxSec = currSec;
                                     }
-                                    else maxSec = currSec;
                                     for(int sec = 0; sec<=maxSec; sec++) {
-                                            minToAdd.addEntry((SensorEntry)dataSnapshot.child("Year").child("1").child("Months").child(Integer.toString(month)).child("Weeks").child(Integer.toString(week)).child("Days").child(Integer.toString(day)).child("Hour").ch0ild(Integer.toString(hour)).child("Min").child(Integer.toString(min)).child("Second").child(Integer.toString(sec)).getValue()));
+                                        SensorEntry secToAdd = dataSnapshot.child("Year").child("1").child("Months").child(Integer.toString(month)).child("Weeks").child(Integer.toString(week)).child("Days").child(Integer.toString(day)).child("Hour").child(Integer.toString(hour)).child("Min").child(Integer.toString(min)).child("Second").child(Integer.toString(sec)).getValue(SensorEntry.class);
+                                        //minToAdd.addEntry(dataSnapshot.child("Year").child("1").child("Months").child(Integer.toString(month)).child("Weeks").child(Integer.toString(week)).child("Days").child(Integer.toString(day)).child("Hour").child(Integer.toString(hour)).child("Min").child(Integer.toString(min)).child("Second").child(Integer.toString(sec)).getValue(SensorEntry.class));
+                                        minToAdd.addEntry(secToAdd);
                                     }
                                     hourToAdd.addMinute(minToAdd);
                                 }
-
+                                dayToAdd.addHour(hourToAdd);
                             }
+                            weekToAdd.addDay(dayToAdd);
                         }
+                        monthToAdd.addWeek(weekToAdd);
                     }
+                    currYear.addMonth(monthToAdd);
                 }
                 double avgTemp = currYear.getAverageTemp();
-                temp.setText(Double.toString(avgTemp));
+                TextView avgTempField = (TextView) findViewById(R.id.testTemp);
+                avgTempField.setText(Double.toString(avgTemp));
             }
 
             @Override
