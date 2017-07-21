@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="clientgreenhouse.clientgreenhouseapp">
 
-    <uses-sdk tools:overrideLibrary="android.support.test.uiautomator.v18"/>
+    <uses-sdk tools:overrideLibrary="android.support.test.uiautomator.v18" />
 
     <application
         android:allowBackup="true"
@@ -20,17 +20,21 @@
             </intent-filter>
         </activity>
         <activity android:name=".RangesActivity" />
-        <activity
-            android:name=".CreateNotificationActivity"
-            android:theme="@android:style/Theme.Translucent" >
-        </activity>
         <activity android:name=".GraphActivity" />
+
         <service
             android:name=".NotificationService"
             android:enabled="true"
             android:exported="false" />
 
-        <receiver android:name=".NotificationReceiver" />
+        <receiver android:name=".NotificationReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".MessageBoard" />
+        <activity android:name=".NewBoardPost"></activity>
     </application>
 
 </manifest>
