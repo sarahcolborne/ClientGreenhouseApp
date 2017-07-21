@@ -16,6 +16,10 @@ public class RangesActivity extends AppCompatActivity {
     public Double humidityHighRange;
     public Double lightLowRange;
     public Double lightHighRange;
+    //get the instance of the range storage
+    RangesStorage instance = RangesStorage.getInstance();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,10 @@ public class RangesActivity extends AppCompatActivity {
         final EditText tempNewLowRange = (EditText) findViewById(R.id.tempNewLowVal);
         final EditText tempNewHighRange = (EditText) findViewById(R.id.tempNewUpperVal);
 
+        //Get current range
+        tempCurrLowRange.setText(instance.getTempLowRange().toString());
+        tempCurrHighRange.setText(instance.getTempHighRange().toString());
+
         updateTempButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View x){
                 String strNewTempLowVal = tempNewLowRange.getText().toString();
@@ -79,8 +87,10 @@ public class RangesActivity extends AppCompatActivity {
 
                     } else {
                         //store the values, update views, clear input areas
-                        Double tempLowVal = Double.parseDouble(tempNewLowRange.getText().toString());
-                        Double tempHighVal = Double.parseDouble(tempNewHighRange.getText().toString());
+                        instance.setTempLowRange(Double.parseDouble(tempNewLowRange.getText().toString()));
+                        instance.setTempHighRange(Double.parseDouble(tempNewHighRange.getText().toString()));
+//                        Double tempLowVal = Double.parseDouble(tempNewLowRange.getText().toString());
+//                        Double tempHighVal = Double.parseDouble(tempNewHighRange.getText().toString());
                         tempCurrLowRange.setText(newTempLowVal.toString());
                         tempCurrHighRange.setText(newTempHighVal.toString());
                         tempNewLowRange.setText("");
@@ -100,6 +110,10 @@ public class RangesActivity extends AppCompatActivity {
         final TextView humidityUpdateMessage = (TextView) findViewById(R.id.humidityUpdateMessage);
         final EditText humidityNewLowRange = (EditText) findViewById(R.id.humidityNewLowVal);
         final EditText humidityNewHighRange = (EditText) findViewById(R.id.humidityNewUpperVal);
+
+        //Get current range
+        humidityCurrLowRange.setText(instance.getHumidLowRange().toString());
+        humidityCurrHighRange.setText(instance.getHumidHighRange().toString());
 
         updateHumidityButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View x){
@@ -123,8 +137,10 @@ public class RangesActivity extends AppCompatActivity {
 
                     } else {
                         //store the values, update views, clear input areas
-                        Double humidityLowVal = Double.parseDouble(humidityNewLowRange.getText().toString());
-                        Double humidityHighVal = Double.parseDouble(humidityNewHighRange.getText().toString());
+                        instance.setHumidLowRange(Double.parseDouble(humidityNewLowRange.getText().toString()));
+                        instance.setHumidHighRange(Double.parseDouble(humidityNewHighRange.getText().toString()));
+////                      Double humidityLowVal = Double.parseDouble(humidityNewLowRange.getText().toString());
+//                        Double humidityHighVal = Double.parseDouble(humidityNewHighRange.getText().toString());
                         humidityCurrLowRange.setText(newHumidityLowVal.toString());
                         humidityCurrHighRange.setText(newHumidityHighVal.toString());
                         humidityNewLowRange.setText("");
@@ -145,6 +161,10 @@ public class RangesActivity extends AppCompatActivity {
         final TextView lightUpdateMessage = (TextView) findViewById(R.id.lightUpdateMessage);
         final EditText lightNewLowRange = (EditText) findViewById(R.id.lightNewLowVal);
         final EditText lightNewHighRange = (EditText) findViewById(R.id.lightNewUpperVal);
+
+        //Get current range
+        lightCurrLowRange.setText(instance.getLightLowRange().toString());
+        lightCurrHighRange.setText(instance.getLightHighRange().toString());
 
         updateLightButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View x){
@@ -168,7 +188,9 @@ public class RangesActivity extends AppCompatActivity {
 
                     } else {
                         //store the values, update views, clear input areas
-                        Double lightLowVal = Double.parseDouble(lightNewLowRange.getText().toString());
+                        instance.setLightLowRange(Double.parseDouble(lightNewLowRange.getText().toString()));
+                        instance.setLightHighRange(Double.parseDouble(lightNewHighRange.getText().toString()));
+////                    Double lightLowVal = Double.parseDouble(lightNewLowRange.getText().toString());
                         Double lightHighVal = Double.parseDouble(lightNewHighRange.getText().toString());
                         lightCurrLowRange.setText(newLightLowVal.toString());
                         lightCurrHighRange.setText(newLightHighVal.toString());
