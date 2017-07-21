@@ -33,7 +33,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".MessageBoard"></activity>
+        <activity android:name=".MessageBoard" />
+        <activity android:name=".NewBoardPost"></activity>
     </application>
 
 </manifest>

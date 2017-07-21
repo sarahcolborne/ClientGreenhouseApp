@@ -35,12 +35,14 @@ public class MainActivity extends AppCompatActivity {
         final Button homeNavButton;
         final Button rangesNavButton;
         final Button graphsNavButton;
+        final Button messageBButton;
         final TextView currentTemp;
         final TextView currentHumidity;
         final TextView currentLight;
         homeNavButton = (Button) findViewById(R.id.homeButton);
         rangesNavButton = (Button) findViewById(R.id.rangesButton);
         graphsNavButton = (Button) findViewById(R.id.graphsButton);
+        messageBButton = (Button) findViewById(R.id.messageBButton);
 
         //This code executes when the home button is pressed
         homeNavButton.setOnClickListener(new View.OnClickListener(){
@@ -58,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
         graphsNavButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View x){
                 startActivity(new Intent(MainActivity.this, GraphActivity.class));
+            }
+        });
+        //This code executes when the message board button is pressed
+        messageBButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View x){
+                startActivity(new Intent(MainActivity.this, MessageBoard.class));
             }
         });
 
