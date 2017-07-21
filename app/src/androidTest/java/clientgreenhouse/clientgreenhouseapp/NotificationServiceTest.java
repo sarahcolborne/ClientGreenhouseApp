@@ -34,7 +34,7 @@ public class NotificationServiceTest {
                 MainActivity.class);
 
         @Test
-        public void notificationTest() {
+        public void notificationExistTest() {
                 //Access Range activity
                 onView(withId(R.id.rangesButton)).perform(click());
                 //Insert and update values for temperature
