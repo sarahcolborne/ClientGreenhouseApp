@@ -76,14 +76,15 @@ public class MainActivity extends AppCompatActivity {
         currentHumidity =(TextView) findViewById(R.id.humidityValue);
         currentLight =(TextView) findViewById(R.id.lightValue);
 
+        final DataHolder instance = DataHolder.getInstance();
+
         // Displays the real time temperature from firebase
         mCurrTemp.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Long value = dataSnapshot.getValue(Long.class);
-                String valString = value.toString();
-                currentTemp.setText(valString);
-                DataHolder.setTempData(valString);
+                Double value = dataSnapshot.getValue(Double.class);
+                currentTemp.setText(value.toString());
+                instance.setTempData(value);
             }
 
             @Override
@@ -95,10 +96,9 @@ public class MainActivity extends AppCompatActivity {
         mCurrHumidity.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Long value = dataSnapshot.getValue(Long.class);
-                String valString = value.toString();
-                currentHumidity.setText(valString);
-                DataHolder.setHumidityData(valString);
+                Double value = dataSnapshot.getValue(Double.class);
+                currentHumidity.setText(value.toString());
+                instance.setHumidityData(value);
             }
 
             @Override
@@ -110,10 +110,9 @@ public class MainActivity extends AppCompatActivity {
         mCurrLight.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Long value = dataSnapshot.getValue(Long.class);
-                String valString = value.toString();
-                currentLight.setText(valString);
-                DataHolder.setLightData(valString);
+                Double value = dataSnapshot.getValue(Double.class);
+                currentLight.setText(value.toString());
+                instance.setLightData(value);
             }
 
             @Override

@@ -20,7 +20,6 @@ public class RangesActivity extends AppCompatActivity {
     RangesStorage instance = RangesStorage.getInstance();
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

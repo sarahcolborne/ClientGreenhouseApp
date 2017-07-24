@@ -28,6 +28,7 @@ import static junit.framework.Assert.assertEquals;
 public class NotificationServiceTest {
 
         private final static String NOTIFICATION_TITLE = "Alert!";
+        private final static String NOTIFICATION_TEXT = "Temperature OFR | ";
 
         @Rule
         public ActivityTestRule<MainActivity> mainActivityRule = new ActivityTestRule<>(
@@ -39,11 +40,11 @@ public class NotificationServiceTest {
                 onView(withId(R.id.rangesButton)).perform(click());
                 //Insert and update values for temperature
                 onView(withId(R.id.tempNewLowVal)).perform(typeText("20.0"), closeSoftKeyboard());
-                onView(withId(R.id.tempNewUpperVal)).perform(typeText("25.0"), closeSoftKeyboard());
+                onView(withId(R.id.tempNewUpperVal)).perform(typeText("22.0"), closeSoftKeyboard());
                 onView(withId(R.id.updateTempButton)).perform(click());
                 //Insert and update values for humidity
                 onView(withId(R.id.humidityNewLowVal)).perform(typeText("35.0"), closeSoftKeyboard());
-                onView(withId(R.id.humidityNewUpperVal)).perform(typeText("40.0"), closeSoftKeyboard());
+                onView(withId(R.id.humidityNewUpperVal)).perform(typeText("45.0"), closeSoftKeyboard());
                 onView(withId(R.id.updateHumidityButton)).perform(click());
                 //Insert and update values for light
                 /*
@@ -60,6 +61,8 @@ public class NotificationServiceTest {
                 device.openNotification();
                 device.wait(Until.hasObject(By.text(NOTIFICATION_TITLE)), TIMEOUT);
                 UiObject2 title = device.findObject(By.text(NOTIFICATION_TITLE));
+                UiObject2 text = device.findObject(By.text(NOTIFICATION_TEXT));
                 assertEquals(NOTIFICATION_TITLE, title.getText());
+                assertEquals(NOTIFICATION_TEXT, text.getText());
         }
 }

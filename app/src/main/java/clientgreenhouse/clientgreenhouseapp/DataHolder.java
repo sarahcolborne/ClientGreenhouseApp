@@ -6,31 +6,48 @@ package clientgreenhouse.clientgreenhouseapp;
 
 public class DataHolder {
 
-    private static String tempData;
-    private static String humidityData;
-    private static String lightData;
+    private static double tempData;
+    private static double humidityData;
+    private static double lightData;
 
-    public static String getTempData() {
+    private static DataHolder instance;
+
+    private DataHolder(){
+
+    }
+
+    static {
+        instance = new DataHolder();
+        tempData = 0.0;
+        humidityData = 0.0;
+        lightData = 0.0;
+    }
+
+    public static DataHolder getInstance() {
+        return instance;
+    }
+
+    public static double getTempData() {
         return tempData;
     }
 
-    public static String getHumidityData(){
+    public static double getHumidityData(){
         return humidityData;
     }
 
-    public static String getLightData() {
+    public static double getLightData() {
         return lightData;
     }
 
-    public static void setTempData(String s) {
-        tempData = s;
+    public static void setTempData(double tempNum) {
+        tempData = tempNum;
     }
 
-    public static void setHumidityData(String s) {
-        humidityData = s;
+    public static void setHumidityData(double humidNum) {
+        humidityData = humidNum;
     }
 
-    public static void setLightData(String s) {
-        lightData = s;
+    public static void setLightData(double lightNum) {
+        lightData = lightNum;
     }
 }
