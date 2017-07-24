@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ClientGreenhouseApp</string>
+    <string name="app_name">Greenhouse Monitor</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Graphs</string>
     <string name="title_notifications">Ranges</string>
