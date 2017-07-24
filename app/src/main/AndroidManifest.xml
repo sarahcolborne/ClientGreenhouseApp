@@ -34,7 +34,8 @@
         </receiver>
 
         <activity android:name=".MessageBoard" />
-        <activity android:name=".NewBoardPost"></activity>
+        <activity android:name=".NewBoardPost" />
+        <activity android:name=".MessageDetailActivity"></activity>
     </application>
 
 </manifest>

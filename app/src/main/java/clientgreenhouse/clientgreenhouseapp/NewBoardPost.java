@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
 
@@ -19,10 +23,14 @@ import java.text.SimpleDateFormat;
 
 public class NewBoardPost extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_board_post);
+
+        FirebaseDatabase firebaseRootRef = FirebaseDatabase.getInstance();
+        final DatabaseReference messageRef = firebaseRootRef.getReference("Messages");
 
         final Button cancelButton;
         final Button submitButton;
@@ -51,6 +59,8 @@ public class NewBoardPost extends AppCompatActivity {
                 String name = nameField.getText().toString();
                 String message = messageField.getText().toString();
                 String formattedDate = df.format(c.getTime());
+                String keyID = messageRef.push().getKey();
+                GreenMessage messageToPost = new GreenMessage(name, message, formattedDate, keyID);
 
                 //Verifying the entered values
                 if (name.equals("")){
@@ -60,9 +70,9 @@ public class NewBoardPost extends AppCompatActivity {
                     errorMessage.setText("Please enter a message");
                 }
                 else {
-                    // TODO: SEND TO FIREBASE
-
-                    startActivity(new Intent(NewBoardPost.this, MessageBoard.class));
+                    messageRef.child(keyID).setValue(messageToPost);
+                    finish();
+                    //startActivity(new Intent(NewBoardPost.this, MessageBoard.class));
                 }
             }
         });
