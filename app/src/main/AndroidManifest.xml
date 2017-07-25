@@ -27,6 +27,10 @@
             android:name=".NotificationService"
             android:enabled="true"
             android:exported="false" />
+        <service
+            android:name=".MessageNotificationService"
+            android:enabled="true"
+            android:exported="false" />
 
         <receiver android:name=".NotificationReceiver">
             <intent-filter>

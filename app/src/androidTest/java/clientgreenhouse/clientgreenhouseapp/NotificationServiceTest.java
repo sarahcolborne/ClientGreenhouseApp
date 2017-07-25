@@ -27,8 +27,8 @@ import static junit.framework.Assert.assertEquals;
 @RunWith(AndroidJUnit4.class)
 public class NotificationServiceTest {
 
-        private final static String NOTIFICATION_TITLE = "Alert!";
-        private final static String NOTIFICATION_TEXT = "Temperature OFR | ";
+        private final static String NOTIFICATION_TITLE_0 = "Alert!";
+        private final static String NOTIFICATION_TEXT_0 = "Temperature OFR | ";
 
         @Rule
         public ActivityTestRule<MainActivity> mainActivityRule = new ActivityTestRule<>(
@@ -59,10 +59,10 @@ public class NotificationServiceTest {
                 //Check for notification
                 UiDevice device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
                 device.openNotification();
-                device.wait(Until.hasObject(By.text(NOTIFICATION_TITLE)), TIMEOUT);
-                UiObject2 title = device.findObject(By.text(NOTIFICATION_TITLE));
-                UiObject2 text = device.findObject(By.text(NOTIFICATION_TEXT));
-                assertEquals(NOTIFICATION_TITLE, title.getText());
-                assertEquals(NOTIFICATION_TEXT, text.getText());
+                device.wait(Until.hasObject(By.text(NOTIFICATION_TITLE_0)), TIMEOUT);
+                UiObject2 title = device.findObject(By.text(NOTIFICATION_TITLE_0));
+                UiObject2 text = device.findObject(By.text(NOTIFICATION_TEXT_0));
+                assertEquals(NOTIFICATION_TITLE_0, title.getText());
+                assertEquals(NOTIFICATION_TEXT_0, text.getText());
         }
 }

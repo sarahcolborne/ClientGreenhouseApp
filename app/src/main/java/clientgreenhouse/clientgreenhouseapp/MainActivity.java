@@ -6,6 +6,8 @@
  */
 package clientgreenhouse.clientgreenhouseapp;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public DatabaseReference mCurrHumidity =mCurrentRef.child("humid");
     public DatabaseReference mCurrLight= mCurrentRef.child("lux");
     public static String tempValGlobal = "NO_TEXT";
+    final DataHolder instance = DataHolder.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         currentHumidity =(TextView) findViewById(R.id.humidityValue);
         currentLight =(TextView) findViewById(R.id.lightValue);
 
-        final DataHolder instance = DataHolder.getInstance();
+
 
         // Displays the real time temperature from firebase
         mCurrTemp.addValueEventListener(new ValueEventListener() {
@@ -121,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     //display or annul notifications when set
@@ -129,11 +133,13 @@ public class MainActivity extends AppCompatActivity {
         if (NotificationReceiver.alarmRunning(getApplicationContext()) == false){
             NotificationReceiver.setAlarm(getApplicationContext());
             alertButton.setTextColor(Color.RED);
-
+            instance.setJustClickedTrue();
+            startService(new Intent(this, MessageNotificationService.class));
         }
         else{
             NotificationReceiver.deleteAlarm(getApplicationContext());
             alertButton.setTextColor(Color.BLACK);
+            stopService(new Intent(this, MessageNotificationService.class));
         }
     }
 }

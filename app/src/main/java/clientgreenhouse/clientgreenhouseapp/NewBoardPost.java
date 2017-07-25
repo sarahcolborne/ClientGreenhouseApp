@@ -1,5 +1,7 @@
 package clientgreenhouse.clientgreenhouseapp;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,6 +31,8 @@ public class NewBoardPost extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_board_post);
 
+        final DataHolder instance1 = DataHolder.getInstance();
+
         FirebaseDatabase firebaseRootRef = FirebaseDatabase.getInstance();
         final DatabaseReference messageRef = firebaseRootRef.getReference("Messages");
 
@@ -56,11 +60,13 @@ public class NewBoardPost extends AppCompatActivity {
         //This code executes when the submit button is pressed
         submitButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View x){
+
                 String name = nameField.getText().toString();
                 String message = messageField.getText().toString();
                 String formattedDate = df.format(c.getTime());
                 String keyID = messageRef.push().getKey();
                 GreenMessage messageToPost = new GreenMessage(name, message, formattedDate, keyID);
+
 
                 //Verifying the entered values
                 if (name.equals("")){
@@ -72,6 +78,7 @@ public class NewBoardPost extends AppCompatActivity {
                 else {
                     messageRef.child(keyID).setValue(messageToPost);
                     finish();
+                    instance1.setNotifyFalse();
                     //startActivity(new Intent(NewBoardPost.this, MessageBoard.class));
                 }
             }

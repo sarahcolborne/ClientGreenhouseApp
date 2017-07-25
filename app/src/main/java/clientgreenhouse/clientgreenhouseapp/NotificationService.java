@@ -7,6 +7,11 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import static clientgreenhouse.clientgreenhouseapp.R.id.humidityCurrLowVal;
 import static clientgreenhouse.clientgreenhouseapp.R.id.humidityCurrUpperVal;
 import static clientgreenhouse.clientgreenhouseapp.R.id.humidityValue;
@@ -55,5 +60,10 @@ public class NotificationService extends IntentService {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }
