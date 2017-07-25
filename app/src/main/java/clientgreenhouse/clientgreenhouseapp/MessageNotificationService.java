@@ -39,7 +39,24 @@ public class MessageNotificationService extends IntentService {
         ChildEventListener childEventListener = new ChildEventListener() {
 
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {}
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Log.v("\n", Boolean.toString(instance1.getNotify()));
+                Log.v("\n", Boolean.toString(instance1.getFirst()));
+                if (instance1.getNotify() == true) {
+                    if (instance1.getFirst() == false) {
+                        NotificationCompat.Builder mBuilder1 = new NotificationCompat.Builder(getApplicationContext())
+                                .setSmallIcon(R.drawable.alert)
+                                .setContentTitle("NEW MESSAGE(S)")
+                                .setContentText("");
+                        NotificationManager NM1 = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                        NM1.notify(1, mBuilder1.build());
+                    }
+                }
+                else {
+                    instance1.setNotifyTrue();
+                }
+                instance1.setFirstFalse();
+            }
 
             @Override
             public void onChildRemoved(DataSnapshot datasnapshot) {
