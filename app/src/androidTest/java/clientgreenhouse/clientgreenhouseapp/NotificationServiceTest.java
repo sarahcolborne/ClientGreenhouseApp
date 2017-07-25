@@ -29,6 +29,7 @@ public class NotificationServiceTest {
 
         private final static String NOTIFICATION_TITLE_0 = "Alert!";
         private final static String NOTIFICATION_TEXT_0 = "Temperature OFR | ";
+        private final static String NOTIFICATION_TITLE_1 = "NEW MESSAGE(S)";
 
         @Rule
         public ActivityTestRule<MainActivity> mainActivityRule = new ActivityTestRule<>(
@@ -64,5 +65,7 @@ public class NotificationServiceTest {
                 UiObject2 text = device.findObject(By.text(NOTIFICATION_TEXT_0));
                 assertEquals(NOTIFICATION_TITLE_0, title.getText());
                 assertEquals(NOTIFICATION_TEXT_0, text.getText());
+                UiObject2 title1 = device.findObject(By.text(NOTIFICATION_TITLE_1));
+                assertEquals(NOTIFICATION_TITLE_1, title1.getText());
         }
 }
