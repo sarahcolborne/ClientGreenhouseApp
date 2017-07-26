@@ -40,71 +40,35 @@ public class RangePageTests {
 
         //Attempt to submit empty ranges in each button, check resulting messages
         onView(withId(R.id.updateTempButton)).perform(click());
-        //onView(withId(R.id.updateHumidityButton)).perform(click());
-        //onView(withId(R.id.updateLightButton)).perform(click());
         onView(withId(R.id.tempUpdateMessage)).check(matches(withText(emptyRangePhrase)));
-        //onView(withId(R.id.humidityUpdateMessage)).check(matches(withText(emptyRangePhrase)));
-        //onView(withId(R.id.lightUpdateMessage)).check(matches(withText(emptyRangePhrase)));
 
         //Attempt to submit value in only lower bound
         onView(withId(R.id.tempNewLowVal)).perform(typeText("20.2"), closeSoftKeyboard());
-        //onView(withId(R.id.humidityNewLowVal)).perform(typeText("20.2"));
-        //onView(withId(R.id.lightNewLowVal)).perform(typeText("20.2"));
         onView(withId(R.id.updateTempButton)).perform(click());
-        //onView(withId(R.id.updateHumidityButton)).perform(click());
-        //onView(withId(R.id.updateLightButton)).perform(click());
         onView(withId(R.id.tempUpdateMessage)).check(matches(withText(emptyRangePhrase)));
-        //onView(withId(R.id.humidityUpdateMessage)).check(matches(withText(emptyRangePhrase)));
-        //onView(withId(R.id.lightUpdateMessage)).check(matches(withText(emptyRangePhrase)));
 
         //Erase values in lower bound
         onView(withId(R.id.tempNewLowVal)).perform(clearText());
-        //onView(withId(R.id.humidityNewLowVal)).perform(clearText());
-        //onView(withId(R.id.lightNewLowVal)).perform(clearText());
 
         //Attempt to submit value in only lower bound
         onView(withId(R.id.tempNewUpperVal)).perform(typeText("20.2"), closeSoftKeyboard());
-        //onView(withId(R.id.humidityNewUpperVal)).perform(typeText("20.2"));
-        //onView(withId(R.id.lightNewUpperVal)).perform(typeText("20.2"));
         onView(withId(R.id.updateTempButton)).perform(click());
-        //onView(withId(R.id.updateHumidityButton)).perform(click());
-        //onView(withId(R.id.updateLightButton)).perform(click());
         onView(withId(R.id.tempUpdateMessage)).check(matches(withText(emptyRangePhrase)));
-        //onView(withId(R.id.humidityUpdateMessage)).check(matches(withText(emptyRangePhrase)));
-        //onView(withId(R.id.lightUpdateMessage)).check(matches(withText(emptyRangePhrase)));
 
         //Fill in equal values in lower bound to upper
         onView(withId(R.id.tempNewLowVal)).perform(typeText("20.2"), closeSoftKeyboard());
-        //onView(withId(R.id.humidityNewLowVal)).perform(typeText("20.2"));
-        //onView(withId(R.id.lightNewLowVal)).perform(typeText("20.2"));
         onView(withId(R.id.updateTempButton)).perform(click());
-        //onView(withId(R.id.updateHumidityButton)).perform(click());
-        //onView(withId(R.id.updateLightButton)).perform(click());
         onView(withId(R.id.tempUpdateMessage)).check(matches(withText(invalidRangePhrase)));
-        //onView(withId(R.id.humidityUpdateMessage)).check(matches(withText(invalidRangePhrase)));
-        //onView(withId(R.id.lightUpdateMessage)).check(matches(withText(invalidRangePhrase)));
 
         //Fill in higher values in lower bound than upper
         onView(withId(R.id.tempNewLowVal)).perform(clearText(), typeText("25.2"), closeSoftKeyboard());
-        //onView(withId(R.id.humidityNewLowVal)).perform(clearText(), typeText("25.2"));
-        //onView(withId(R.id.lightNewLowVal)).perform(clearText(), typeText("25.2"));
         onView(withId(R.id.updateTempButton)).perform(click());
-        //onView(withId(R.id.updateHumidityButton)).perform(click());
-        //onView(withId(R.id.updateLightButton)).perform(click());
         onView(withId(R.id.tempUpdateMessage)).check(matches(withText(invalidRangePhrase)));
-        //onView(withId(R.id.humidityUpdateMessage)).check(matches(withText(invalidRangePhrase)));
-        //onView(withId(R.id.lightUpdateMessage)).check(matches(withText(invalidRangePhrase)));
 
         //Fill in proper values in both bounds
         onView(withId(R.id.tempNewLowVal)).perform(clearText(), typeText("15.2"), closeSoftKeyboard());
-        //onView(withId(R.id.humidityNewLowVal)).perform(clearText(), typeText("15.2"));
-        //onView(withId(R.id.lightNewLowVal)).perform(clearText(), typeText("15.2"));
         onView(withId(R.id.updateTempButton)).perform(click());
-        //onView(withId(R.id.updateHumidityButton)).perform(click());
-        //onView(withId(R.id.updateLightButton)).perform(click());
         onView(withId(R.id.tempUpdateMessage)).check(matches(withText(acceptedRangePhrase)));
-        //onView(withId(R.id.humidityUpdateMessage)).check(matches(withText(acceptedRangePhrase)));
-        //onView(withId(R.id.lightUpdateMessage)).check(matches(withText(acceptedRangePhrase)));
 
     }
 

@@ -27,23 +27,25 @@ import static junit.framework.Assert.assertEquals;
 @RunWith(AndroidJUnit4.class)
 public class NotificationServiceTest {
 
-        private final static String NOTIFICATION_TITLE = "Alert!";
+        private final static String NOTIFICATION_TITLE_0 = "Alert!";
+        private final static String NOTIFICATION_TEXT_0 = "Temperature OFR | ";
+        private final static String NOTIFICATION_TITLE_1 = "NEW MESSAGE(S)";
 
         @Rule
         public ActivityTestRule<MainActivity> mainActivityRule = new ActivityTestRule<>(
                 MainActivity.class);
 
         @Test
-        public void notificationTest() {
+        public void notificationExistTest() {
                 //Access Range activity
                 onView(withId(R.id.rangesButton)).perform(click());
                 //Insert and update values for temperature
                 onView(withId(R.id.tempNewLowVal)).perform(typeText("20.0"), closeSoftKeyboard());
-                onView(withId(R.id.tempNewUpperVal)).perform(typeText("25.0"), closeSoftKeyboard());
+                onView(withId(R.id.tempNewUpperVal)).perform(typeText("22.0"), closeSoftKeyboard());
                 onView(withId(R.id.updateTempButton)).perform(click());
                 //Insert and update values for humidity
                 onView(withId(R.id.humidityNewLowVal)).perform(typeText("35.0"), closeSoftKeyboard());
-                onView(withId(R.id.humidityNewUpperVal)).perform(typeText("40.0"), closeSoftKeyboard());
+                onView(withId(R.id.humidityNewUpperVal)).perform(typeText("45.0"), closeSoftKeyboard());
                 onView(withId(R.id.updateHumidityButton)).perform(click());
                 //Insert and update values for light
                 /*
@@ -58,8 +60,12 @@ public class NotificationServiceTest {
                 //Check for notification
                 UiDevice device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
                 device.openNotification();
-                device.wait(Until.hasObject(By.text(NOTIFICATION_TITLE)), TIMEOUT);
-                UiObject2 title = device.findObject(By.text(NOTIFICATION_TITLE));
-                assertEquals(NOTIFICATION_TITLE, title.getText());
+                device.wait(Until.hasObject(By.text(NOTIFICATION_TITLE_0)), TIMEOUT);
+                UiObject2 title = device.findObject(By.text(NOTIFICATION_TITLE_0));
+                UiObject2 text = device.findObject(By.text(NOTIFICATION_TEXT_0));
+                assertEquals(NOTIFICATION_TITLE_0, title.getText());
+                assertEquals(NOTIFICATION_TEXT_0, text.getText());
+                UiObject2 title1 = device.findObject(By.text(NOTIFICATION_TITLE_1));
+                assertEquals(NOTIFICATION_TITLE_1, title1.getText());
         }
 }

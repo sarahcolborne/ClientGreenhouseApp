@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:342910049217:android:647a0ea43110a502",
         "android_client_info": {
-          "package_name": "clientgreenhouse.clientgreenhouseapp"
+          "package_name": "com.wolkabout.hexiwear"
         }
       },
       "oauth_client": [
@@ -18,8 +18,52 @@
           "client_id": "342910049217-pjiulp2ogolkgk9fib7m6d1f9qipqdfs.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "clientgreenhouse.clientgreenhouseapp",
+            "package_name": "com.wolkabout.hexiwear",
             "certificate_hash": "6b2cf8362ec85d6b8f69ae9b43014a6f2d9a9b43"
+          }
+        },
+        {
+          "client_id": "342910049217-s7foo3cjg97rajrjdvvsrhcb9q2aaq75.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_yr7sfBy2CFGyX-nQp5SbQ9peyqv2_Ow"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "342910049217-s7foo3cjg97rajrjdvvsrhcb9q2aaq75.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342910049217:android:0f16806bce3cd2b7",
+        "android_client_info": {
+          "package_name": "clientgreenhouse.clientgreenhouseapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "342910049217-92696m86bg7f8rh3cg6a36udaiqouv4u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "clientgreenhouse.clientgreenhouseapp",
+            "certificate_hash": "4e14cc9643e1db7ac48032db617a9c566feba315"
           }
         },
         {

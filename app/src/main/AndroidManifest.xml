@@ -21,10 +21,15 @@
         </activity>
         <activity android:name=".RangesActivity" />
         <activity android:name=".GraphActivity" />
+        <activity android:name=".CreateNotificationActivity" />
         <activity android:name=".GraphViewActivity"/>
 
         <service
             android:name=".NotificationService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name=".MessageNotificationService"
             android:enabled="true"
             android:exported="false" />
 
@@ -34,7 +39,9 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".FBOTestActivity"></activity>
+        <activity android:name=".MessageBoard" />
+        <activity android:name=".NewBoardPost" />
+        <activity android:name=".MessageDetailActivity"></activity>
     </application>
 
 </manifest>
