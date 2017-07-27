@@ -27,8 +27,8 @@ import static junit.framework.Assert.assertEquals;
 @RunWith(AndroidJUnit4.class)
 public class NotificationServiceTest {
 
-        private final static String NOTIFICATION_TITLE_0 = "Alert!";
-        private final static String NOTIFICATION_TEXT_0 = "Temperature OFR | ";
+        private final static String NOTIFICATION_TITLE_0 = "Out of Range!";
+        private final static String NOTIFICATION_TEXT_0 = "Temperature | Humidity | ";
         private final static String NOTIFICATION_TITLE_1 = "NEW MESSAGE(S)";
 
         @Rule
