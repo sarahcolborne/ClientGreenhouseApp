@@ -11,7 +11,8 @@ public class DataHolder {
     private static double lightData;
     private static boolean notify;
     private static boolean first;
-    private static boolean justClicked;
+    private static boolean send;
+    private static String colour;
 
     private static DataHolder instance;
 
@@ -26,7 +27,7 @@ public class DataHolder {
         lightData = 0.0;
         notify = true;
         first = true;
-        justClicked = true;
+        send = false;
     }
 
     public static DataHolder getInstance() {
@@ -49,7 +50,11 @@ public class DataHolder {
 
     public static boolean getFirst() { return first; }
 
-    public static boolean getJustClicked() { return justClicked; }
+    public static boolean getSend() { return send; }
+
+    public static String getColour() {
+        return colour;
+    }
 
     public static void setTempData(double tempNum) {
         tempData = tempNum;
@@ -79,11 +84,15 @@ public class DataHolder {
         first = false;
     }
 
-    public static void setJustClickedTrue() {
-        justClicked = true;
+    public static void setSendTrue() {
+        send = true;
     }
 
-    public static void setJustClickedFalse(){
-        justClicked = false;
+    public static void setSendFalse(){
+        send = false;
+    }
+
+    public static void setColour(String newColour) {
+        colour = newColour;
     }
 }

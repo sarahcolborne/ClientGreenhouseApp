@@ -30,7 +30,7 @@ public class NotificationReceiver extends BroadcastReceiver {
             context.stopService(serviceIntent);
         }
     }
-
+    //checks if alarm is running
     public static boolean alarmRunning(Context context){
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, NotificationReceiver.class);
@@ -38,7 +38,7 @@ public class NotificationReceiver extends BroadcastReceiver {
                 0, intent, PendingIntent.FLAG_NO_CREATE) != null;
         return alarmUp;
     }
-
+    //setup alarm for the notifications
     public static void setAlarm(Context context) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, NotificationReceiver.class);
@@ -51,7 +51,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         intent.setAction("START_SERVICE");
         context.sendBroadcast(intent);
     }
-
+    //delete alarm
     public static void deleteAlarm(Context context) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, NotificationReceiver.class);
@@ -62,7 +62,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         alarmManager.cancel(alarmIntent);
         alarmIntent.cancel();
     }
-
+    //set time for alarm
     private static long getTriggerAt(Date now) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(now);

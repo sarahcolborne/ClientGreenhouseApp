@@ -6,7 +6,7 @@
  */
 package clientgreenhouse.clientgreenhouseapp;
 
-import android.app.NotificationManager;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -31,11 +31,21 @@ public class MainActivity extends AppCompatActivity {
     public DatabaseReference mCurrHumidity =mCurrentRef.child("humid");
     public DatabaseReference mCurrLight= mCurrentRef.child("lux");
     public static String tempValGlobal = "NO_TEXT";
-    final DataHolder instance = DataHolder.getInstance();
+    final DataHolder instance1 = DataHolder.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button alertButton = (Button) findViewById(R.id.button2);
+
+        if (isMyServiceRunning(MessageNotificationService.class)) {
+            alertButton.setTextColor(Color.RED);
+        }
+        else {
+            alertButton.setTextColor(Color.BLACK);
+        }
 
         //this section of code provides the bottom menu button functionality
         final Button homeNavButton;
@@ -87,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Double value = dataSnapshot.getValue(Double.class);
                 currentTemp.setText(value.toString());
-                instance.setTempData(value);
+                instance1.setTempData(value);
             }
 
             @Override
@@ -101,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Double value = dataSnapshot.getValue(Double.class);
                 currentHumidity.setText(value.toString());
-                instance.setHumidityData(value);
+                instance1.setHumidityData(value);
             }
 
             @Override
@@ -115,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Double value = dataSnapshot.getValue(Double.class);
                 currentLight.setText(value.toString());
-                instance.setLightData(value);
+                instance1.setLightData(value);
             }
 
             @Override
@@ -133,13 +143,24 @@ public class MainActivity extends AppCompatActivity {
         if (NotificationReceiver.alarmRunning(getApplicationContext()) == false){
             NotificationReceiver.setAlarm(getApplicationContext());
             alertButton.setTextColor(Color.RED);
-            instance.setJustClickedTrue();
             startService(new Intent(this, MessageNotificationService.class));
+            instance1.setSendTrue();
         }
         else{
             NotificationReceiver.deleteAlarm(getApplicationContext());
             alertButton.setTextColor(Color.BLACK);
             stopService(new Intent(this, MessageNotificationService.class));
+            instance1.setSendFalse();
         }
+    }
+    //checks if message notification service is running
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

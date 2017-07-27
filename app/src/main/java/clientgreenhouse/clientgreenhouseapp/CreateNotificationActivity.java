@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 
 public class CreateNotificationActivity extends Activity {
 
+    //creates notification and sends it
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

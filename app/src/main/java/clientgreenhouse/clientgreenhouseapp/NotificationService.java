@@ -48,13 +48,13 @@ public class NotificationService extends IntentService {
             startNotificationProcess(getApplicationContext());
         }
     }
-
+    //create intent
     public static Intent createIntentStartNotification(Context context) {
         Intent intent = new Intent(context, NotificationService.class);
         intent.setAction(ACTION_START);
         return intent;
     }
-
+    //start create notification activity
     public void startNotificationProcess(Context context) {
         Intent intent = new Intent(context, CreateNotificationActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
