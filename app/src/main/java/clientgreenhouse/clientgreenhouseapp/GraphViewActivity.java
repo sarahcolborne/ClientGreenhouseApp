@@ -6,13 +6,11 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -238,9 +236,7 @@ public class GraphViewActivity extends AppCompatActivity {
                 }
                 initGraph();
 
-//                double avgTemp = currYear.getAverageTemp();
-//                TextView avgTempField = (TextView) findViewById(R.id.testTemp);
-//                avgTempField.setText(Double.toString(avgTemp));
+
             }
 
             @Override
@@ -249,56 +245,7 @@ public class GraphViewActivity extends AppCompatActivity {
             }
         });
 
-//        Query lastTem = myRef.child(TEMPERATURE).orderByKey().limitToLast(1);
-//        lastTem.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                if (dataSnapshot != null)
-//                    for (DataSnapshot child : dataSnapshot.getChildren()) {
-//                        lastValuesTEMPERATURE = child.getValue(Double.class);
-//                    }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//        Query lastLit = myRef.child(LIGHT).orderByKey().limitToLast(1);
-//        lastLit.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                if (dataSnapshot != null)
-//                    for (DataSnapshot child : dataSnapshot.getChildren()) {
-//                        lastValuesLIGHT = child.getValue(Double.class);
-//                    }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//        Query lastHum = myRef.child(HUMIDITY).orderByKey().limitToLast(1);
-//        lastHum.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                if (dataSnapshot != null)
-//                    if (dataSnapshot != null)
-//                        for (DataSnapshot child : dataSnapshot.getChildren()) {
-//                            lastValuesHUMIDITY = child.getValue(Double.class);
-//                        }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//        initGraph(graphViewLIGHT);
-//        initGraph(graphViewHUMIDITY);
-//        initGraph(graphViewTEMPERATURE);
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -382,17 +329,6 @@ public class GraphViewActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-//        mTimer = new Runnable() {
-//            @Override
-//            public void run() {
-//                graphLastXValue += 0.25d;
-//                mSeriesTEMPERATURE.appendData(new DataPoint(graphLastXValue, lastValuesTEMPERATURE), true, 22);
-//                mSeriesHUMIDITY.appendData(new DataPoint(graphLastXValue, lastValuesHUMIDITY), true, 22);
-//                mSeriesLIGHT.appendData(new DataPoint(graphLastXValue, lastValuesLIGHT), true, 22);
-//                mHandler.postDelayed(this, 330);
-//            }
-//        };
-//        mHandler.postDelayed(mTimer, 1500);
     }
 
     @Override

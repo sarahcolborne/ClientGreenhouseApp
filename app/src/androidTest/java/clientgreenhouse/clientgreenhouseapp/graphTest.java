@@ -6,6 +6,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -17,20 +18,21 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 public class graphTest {
 
     @Rule
-    public ActivityTestRule<GraphActivity> graphActivityRule = new ActivityTestRule<>(
-            GraphActivity.class);
+    public ActivityTestRule<GraphViewActivity> graphActivityRule = new ActivityTestRule<>(
+            GraphViewActivity.class);
 
     @Test
-    public void tempTest() {
+    public void tempGraphTest() {
         onView(withId(R.id.graphTEMPERATURE)).check(matches(isDisplayed()));
 
     }
     @Test
-    public void humidityTest() {
+    public void humidityGraphTest() {
         onView(withId(R.id.graphHUMIDITY)).check(matches(isDisplayed()));
     }
     @Test
-    public void luxTest() {
-        onView(withId(R.id.graphLIGHT)).check(matches(isDisplayed()));
+    public void luxGraphTest() {
+
+        onView(withId(R.id.graphLIGHT)).perform(scrollTo()).check(matches(isDisplayed()));
     }
 }
