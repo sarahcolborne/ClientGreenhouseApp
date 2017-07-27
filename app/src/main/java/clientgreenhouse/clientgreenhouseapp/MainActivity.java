@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Double value = dataSnapshot.getValue(Double.class);
-                currentTemp.setText(value.toString());
+                currentTemp.setText(value.toString() + "°C");
                 instance.setTempData(value);
             }
 
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Double value = dataSnapshot.getValue(Double.class);
-                currentHumidity.setText(value.toString());
+                currentHumidity.setText(value.toString() + "%");
                 instance.setHumidityData(value);
             }
 
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Double value = dataSnapshot.getValue(Double.class);
-                currentLight.setText(value.toString());
+                currentLight.setText(value.toString() + "%");
                 instance.setLightData(value);
             }
 
