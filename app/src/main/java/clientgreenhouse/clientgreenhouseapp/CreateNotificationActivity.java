@@ -36,13 +36,13 @@ public class CreateNotificationActivity extends Activity {
 
         String message = "";
         if (tempNum < tempRangeLowNum ||  tempNum > tempRangeHighNum) {
-            message += "Temperature OFR | ";
+            message += "Temperature | ";
         }
         if (humidityNum < humidityRangeLowNum || humidityNum > humidityRangeHighNum) {
-            message += "Humidity OFR | ";
+            message += "Humidity | ";
         }
         if (lightNum < lightRangeLowNum || lightNum > lightRangeHighNum) {
-            message += "Light OFR | ";
+            message += "Light | ";
         }
 
         if (!message.equals("")) {
