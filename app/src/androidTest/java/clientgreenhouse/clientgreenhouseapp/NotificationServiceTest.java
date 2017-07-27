@@ -44,7 +44,7 @@ public class NotificationServiceTest {
                 onView(withId(R.id.tempNewUpperVal)).perform(typeText("22.0"), closeSoftKeyboard());
                 onView(withId(R.id.updateTempButton)).perform(click());
                 //Insert and update values for humidity
-                onView(withId(R.id.humidityNewLowVal)).perform(typeText("35.0"), closeSoftKeyboard());
+                onView(withId(R.id.humidityNewLowVal)).perform(typeText("40.0"), closeSoftKeyboard());
                 onView(withId(R.id.humidityNewUpperVal)).perform(typeText("45.0"), closeSoftKeyboard());
                 onView(withId(R.id.updateHumidityButton)).perform(click());
                 //Insert and update values for light
