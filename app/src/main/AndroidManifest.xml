@@ -22,6 +22,7 @@
         <activity android:name=".RangesActivity" />
         <activity android:name=".GraphActivity" />
         <activity android:name=".CreateNotificationActivity" />
+        <activity android:name=".GraphViewActivity"/>
 
         <service
             android:name=".NotificationService"
