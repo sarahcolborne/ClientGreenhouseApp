@@ -48,7 +48,7 @@ public class CreateNotificationActivity extends Activity {
         if (!message.equals("")) {
             NotificationCompat.Builder mBuilder0 = new NotificationCompat.Builder(this)
                     .setSmallIcon(R.drawable.alert)
-                    .setContentTitle("Alert!")
+                    .setContentTitle("Out of Range!")
                     .setContentText(message);
             NotificationManager NM0 = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             NM0.notify(0, mBuilder0.build());
